@@ -29,9 +29,36 @@ class Walker {
   }
 }
 
+class Debug {}
+
 let walker = new Walker();
+let walkers = [walker];
+let showDebug = true;
 
 function draw() {
   walker.step();
   walker.show();
+
+  if (showDebug) {
+    populateDebug();
+  }
 }
+
+function populateDebug() {
+  document.getElementById("walkerx").innerText = walker.x;
+  document.getElementById("walkery").innerText = walker.y;
+}
+
+document.getElementById("debugToggle").onclick(() => {
+  console.log("hello");
+});
+
+function debugLoop(interval) {
+  setInterval(() => {
+    console.log("hi");
+    console.log(walker.x);
+    console.log(walker.y);
+  }, interval);
+}
+
+//debugLoop(17);
